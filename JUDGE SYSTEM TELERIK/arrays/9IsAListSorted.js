@@ -15,32 +15,28 @@ const test = [
     '1,2,3,4,5',
     '1,2,8,9,9',
     '1,2,2,3,2'
-    
+
 ];
 
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const tries = gets();
+const tries = +gets();
 
-let answer;
+for (let i = 0; i < tries; i++) {
+    let array = gets().split(',').map(e => +e);
 
+    let isArraySorted = true;
 
-for (let i = 1; i <= tries; i++) {
-    let list = gets().split(',').map(el => +el);
-    let currentDigit = 0;
-    let result = 'false';
-
-    for (let j = 0; j <= list.length-1; j++) {
-        if( list[j] >= currentDigit ){
-            currentDigit = j;
-            result = 'true';
-        }else{
-            result = 'false';
+    for (let j = 0; j < array.length - 1; j++) {
+        if (array[j] > array[j + 1]) {
+            isArraySorted = false;
             break;
         }
     }
-    print(result);
-} 
+
+    print(isArraySorted);
+}
+
 
 
